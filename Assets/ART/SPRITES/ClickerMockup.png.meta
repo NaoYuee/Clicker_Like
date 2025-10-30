@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ClickerMockup_0: -2827680178812214404
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

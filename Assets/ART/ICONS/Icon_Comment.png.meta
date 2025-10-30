@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b368dc4f1db908d41ab96add4d8754d3
+guid: b03730af0329bdd47a3b71554627063e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4408503087569458927
-    second: UI_TabBG_0
+      213: -4674103491759345443
+    second: Icon_Comment_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_TabBG_0
+      name: Icon_Comment_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 242
-        height: 66
+        width: 50
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe65acd63362e2d30800000000000000
-      internalID: 4408503087569458927
+      spriteID: dd0754283af322fb0800000000000000
+      internalID: -4674103491759345443
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      UI_TabBG_0: 4408503087569458927
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
