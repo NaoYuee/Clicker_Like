@@ -11,4 +11,5 @@ public class UpgradeContent
     public string _priceText;
     public string _description;
     public Sprite _objectIcon;
+    public UpgradeType _upgradeType;
 }

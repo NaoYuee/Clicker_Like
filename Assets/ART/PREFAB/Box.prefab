@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5660378, g: 0.4886081, b: 0.4886081, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -504,8 +504,8 @@ MonoBehaviour:
   _upgradeBoxUI: {fileID: 1255507775516459850}
   _hiddenTitle: ???
   _hiddenDescription: Not yet available
-  _startPrice: 0
-  _priceMultiplier: 1.15
+  _hiddenColor: {r: 0.5647059, g: 0.49019608, b: 0.49019608, a: 1}
+  _numberMax: 3
 --- !u!1 &8510323392384762302
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 40.9, y: 2}
+  m_AnchoredPosition: {x: 40.9, y: 0.1}
   m_SizeDelta: {x: 43.7865, y: 46.6941}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9063037553584888276

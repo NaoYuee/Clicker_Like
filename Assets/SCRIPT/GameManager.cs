@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Gauge Progession")]
     public Slider _clickGauge;
-    public float _gaugeProgression;
-    public int _gaugeMax = 10;
+    private float _gaugeProgression;
+    private int _gaugeMax = 10;
     public int _gaugeMultiplier;
 
     [Header("Clickable Objects")]
@@ -24,14 +25,20 @@ public class GameManager : MonoBehaviour
     Vector3 _mousePos;
     RaycastHit2D _raycastHit2D;
 
+    [Header("Animations")]
+    public Animator _charaAnimator;
+
+
     [Header("Upgrades")]
     public List<UpgradeContent> _upgrades;
     public GameObject _upgradePrefabUI;
     public GameObject _parentUpgrades;
+    public Action _onClick;
 
 
     public void Start()
     {
+        /*_onClick += CharaAnimation;*/
         _clickGauge.maxValue = _gaugeMax;
 
         foreach (var upgrade in _upgrades)
@@ -41,6 +48,7 @@ public class GameManager : MonoBehaviour
             var _boxUpgrades = go.GetComponent<BoxUpgrades>();
             _boxUpgrades.Initialize(upgrade);
         }
+
     }
 
     private void Update()
@@ -53,10 +61,11 @@ public class GameManager : MonoBehaviour
         {
             _raycastHit2D = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
             _clickObjects = _raycastHit2D ? _raycastHit2D.collider.transform : null;
-            
+
             if (_clickObjects)
             {
-                addClicks();
+                AddClicks(1);
+                CharaAnimation();
             }
         }
     }
@@ -64,6 +73,13 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+    }
+
+    public void CharaAnimation()
+    {
+        Debug.Log("ola");
+        /*_charaAnimator.SetTrigger("_isClicked");*/
+        _charaAnimator.Play("ANIM_LittleChara_Squidge", 0, 0f);
     }
 
     public bool PurchaseAction(int cost)
@@ -77,19 +93,23 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public void UpdateCounter()
+    private void UpdateCounter()
     {
-        _clickText.text = _clicks.ToString();
+        _clickText.text = $"x {_clicks.ToString()}";
     }
 
-    public void addClicks()
+    public void AddClicks(int _addedClicks, bool _isPlayerClick = true)
     {
-        _clicks++;    
+        _clicks = _clicks + _addedClicks;
         UpdateCounter();
         Gauge();
+        if (_isPlayerClick)
+        {
+            _onClick.Invoke();
+        }
     }
 
-    public void Gauge()
+    private void Gauge()
     {
         if (_gaugeProgression % _gaugeMax == 0 && _gaugeProgression != 0)
         {

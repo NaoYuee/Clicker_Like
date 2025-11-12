@@ -11,22 +11,32 @@ public class BoxUpgrades : MonoBehaviour
     public TMP_Text _priceText;
     public TMP_Text _description;
     public Image _objectIcon;
-    public Image _upgradeBoxUI;
+    [SerializeField] private Image _upgradeBoxUI;
     public string _hiddenTitle;
     public string _hiddenDescription;
+    private string _titleStored;
+    private string _descriptionStored;
+    [SerializeField] private Color _hiddenColor;
 
     [Header("Price")]
-    public int _startPrice;
+    private int _startPrice;
     int _price;
-    public float _priceMultiplier;
-    int _upgradeLvl = 0;
+    private float _priceMultiplier;
+    private int _upgradeLvl = 0;
 
-    /*    [Header("Upgrade")]
-        public TMP_Text _clickCount;
-        public int _currentClickNum;
-        public int _numberAdd;
-        public int _addedClicks;*/
-    bool _isPurchased;
+    [Header("Upgrade")]
+    private bool _isPurchased;
+
+    public UpgradeType _upgradeType;
+
+    private int _currentClickNum;
+    public int _numberMax;
+    private int _addedClicks;
+    private int _giftedClicks = 2;
+
+
+    private float _timer;
+    private float _timeGoal = 3;
 
 
     #region to do 
@@ -42,43 +52,68 @@ public class BoxUpgrades : MonoBehaviour
 
     /*
     Once the upgrade is bought start counting (numberAdd) from (currentClickNum) and once that numberAdd reaches the max add (addClicks).
-    Reset to 0 (numberAdd) once it has reached it's maximum)
-     */
+    Reset to 0 (numberAdd) once it has reached it's maximum (numberAddMax))
+    */
+
+    /* Dans update faire en sorte qu'il y est un temps à atteindre (_timeGoal) et une variable de timer en privée (_timer). */
+
     #endregion
 
     private void Start()
     {
         UpdateUI();
+        if (_upgradeType == UpgradeType.UpgradePerClick)
+        {
+            GameManager.Instance._onClick += UpgradePerClicks;
+        }
+    }
+
+    private void Update()
+    {
+        if (_isPurchased == true)
+        {
+            if (_upgradeType == UpgradeType.UpgradeTimer)
+            {
+                UpgradeWithTimer();
+            }
+        }
     }
 
     public void Initialize(UpgradeContent upgrade)
     {
         _title.text = upgrade._title;
+        _titleStored = _title.text;
+
         _priceText.text = upgrade._priceText;
         _startPrice = int.Parse(_priceText.text);
         _description.text = upgrade._description;
+        _descriptionStored = _description.text;
+
         _objectIcon.sprite = upgrade._objectIcon;
+        _upgradeType = upgrade._upgradeType;
     }
 
-    public void UpdateUI()
+    private void UpdateUI()
     {
         _priceText.text = CalculatePrice().ToString();
-        bool _isPurchased = _upgradeLvl> 0;
+        _isPurchased = _upgradeLvl > 0;
         if (_isPurchased == false)
         {
             _objectIcon.color = Color.black;
-            _upgradeBoxUI.color = new Color(0x8A,0x58,0x58,0xFF) ; //Color won't change
-            _hiddenTitle = "???";
-            _hiddenDescription = "Not yet available";
+            _upgradeBoxUI.color = _hiddenColor;
+            _title.text = _hiddenTitle;
+            _description.text = _hiddenDescription;
         }
         else
         {
             _objectIcon.color = Color.white;
             _upgradeBoxUI.color = Color.white;
+            _title.text = _titleStored;
+            _description.text = _descriptionStored;
         }
     }
 
-    int CalculatePrice()
+    private int CalculatePrice()
     {
         _price = Mathf.RoundToInt(_startPrice * Mathf.Pow(_priceMultiplier, _upgradeLvl));
         return _price;
@@ -95,27 +130,31 @@ public class BoxUpgrades : MonoBehaviour
         }
     }
 
-    /*    public void UpgradePerClicks(int _numberAdd, int _addedClicks)
+    #region Upgrades
+    private void UpgradeWithTimer()
+    {
+        _timer += Time.deltaTime;
+        if (_timer >= _timeGoal)
         {
-            if (_isPurchased == true)
-            {
-                _isPurchased = false;
-                //Change visuals to new upgrade
-                int.TryParse(_clickCount.text, out _currentClickNum);
-                while (_isPurchased = false)
-                {
-                    for (int i = 0; i < _numberAdd; i++)
-                    {
-                        _currentClickNum++;
-                    }
-                    _currentClickNum = _currentClickNum + _addedClicks;
-                    //change tmp_text into new value
-                }
-            }
-        }*/
+            _timer = 0;
+            GameManager.Instance.AddClicks(2, false);
+        }
+    }
 
-    /* public void BuyBox()
-     {
-         int _price = 
-     }*/
+    public void UpgradePerClicks()
+    {
+        if (_isPurchased == true)
+        {
+            _currentClickNum++;
+
+            if (_currentClickNum >= _numberMax)
+            {
+                _currentClickNum = 0;
+                GameManager.Instance.AddClicks(_giftedClicks, false);
+
+            }
+        }
+    }
+
+    #endregion
 }
