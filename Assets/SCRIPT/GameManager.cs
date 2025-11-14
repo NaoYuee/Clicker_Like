@@ -26,8 +26,7 @@ public class GameManager : MonoBehaviour
     RaycastHit2D _raycastHit2D;
 
     [Header("Animations")]
-    public Animator _charaAnimator;
-
+    public List<AnimationHandler> _animations;
 
     [Header("Upgrades")]
     public List<UpgradeContent> _upgrades;
@@ -38,7 +37,6 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        /*_onClick += CharaAnimation;*/
         _clickGauge.maxValue = _gaugeMax;
 
         foreach (var upgrade in _upgrades)
@@ -65,7 +63,7 @@ public class GameManager : MonoBehaviour
             if (_clickObjects)
             {
                 AddClicks(1);
-                CharaAnimation();
+                ClickAnimation();
             }
         }
     }
@@ -75,11 +73,12 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    public void CharaAnimation()
+    public void ClickAnimation()
     {
-        Debug.Log("ola");
-        /*_charaAnimator.SetTrigger("_isClicked");*/
-        _charaAnimator.Play("ANIM_LittleChara_Squidge", 0, 0f);
+        foreach (var animations in _animations)
+        {
+            animations._animator.Play(animations._animationClip);
+        }
     }
 
     public bool PurchaseAction(int cost)
@@ -120,7 +119,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            _gaugeProgression++; //problem cause the value of _clicks does not go back to zero when _gaugeProgression is reinitialized. What to do?
+            _gaugeProgression++; 
             _clickGauge.value = _gaugeProgression;
         }
     }
