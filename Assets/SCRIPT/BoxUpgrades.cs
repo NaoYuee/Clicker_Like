@@ -2,11 +2,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class BoxUpgrades : MonoBehaviour
 {
 
-    [Header("Visuals")]
+    [Header("UI")]
     public TMP_Text _title;
     public TMP_Text _priceText;
     public TMP_Text _description;
@@ -18,10 +19,15 @@ public class BoxUpgrades : MonoBehaviour
     private string _descriptionStored;
     [SerializeField] private Color _hiddenColor;
 
+    [Header("Objects")]
+    private GameObject _object;
+    private SpriteRenderer _objectSpriteRenderer;
+    public float _scaleFactor;
+
     [Header("Price")]
     private int _startPrice;
     int _price;
-    private float _priceMultiplier;
+    public float _priceMultiplier;
     private int _upgradeLvl = 0;
 
     [Header("Upgrade")]
@@ -30,13 +36,14 @@ public class BoxUpgrades : MonoBehaviour
     public UpgradeType _upgradeType;
 
     private int _currentClickNum;
-    public int _numberMax;
+    private int _numberMax = 3;
     private int _addedClicks;
     private int _giftedClicks = 2;
+    private int _giftedClicksTimer = 2;
 
 
     private float _timer;
-    private float _timeGoal = 3;
+    private float _timeGoal = 3f;
 
 
     #region to do 
@@ -75,12 +82,32 @@ public class BoxUpgrades : MonoBehaviour
             if (_upgradeType == UpgradeType.UpgradeTimer)
             {
                 UpgradeWithTimer();
+                ObjectAppear();
             }
+            if (_upgradeType == UpgradeType.UpgradePerClick)
+            {
+                ObjectAppear();
+            }
+        }
+    }
+
+    public void InitializeObjects()
+    {
+        if (_object != null)
+        {
+            _objectSpriteRenderer = _object.GetComponent<SpriteRenderer>();
+            Debug.Log(_objectSpriteRenderer);
+            Color _objectSpriteColor = _object.GetComponent<SpriteRenderer>().color;
+
+            _objectSpriteColor.a = 0f;
+            _objectSpriteRenderer.color = _objectSpriteColor;
+
         }
     }
 
     public void Initialize(UpgradeContent upgrade)
     {
+        //Upgrade Content
         _title.text = upgrade._title;
         _titleStored = _title.text;
 
@@ -91,6 +118,16 @@ public class BoxUpgrades : MonoBehaviour
 
         _objectIcon.sprite = upgrade._objectIcon;
         _upgradeType = upgrade._upgradeType;
+
+        //Upgrade Objects
+        _object = upgrade._object;
+
+        //Upgrade Type Values
+        _timeGoal = upgrade._timeGoal;
+        _giftedClicksTimer = upgrade._giftedClicksTimer;
+
+        _numberMax = upgrade._numberMax;
+        _giftedClicks = upgrade._giftedClicks;
     }
 
     private void UpdateUI()
@@ -130,6 +167,17 @@ public class BoxUpgrades : MonoBehaviour
         }
     }
 
+    private void ObjectAppear()
+    {
+
+        Sequence _sequence = DOTween.Sequence();
+
+        _sequence.Join(_objectSpriteRenderer.DOFade(1f, 0.5f));
+        _sequence.Join(_object.transform.DOScale(_scaleFactor, 0.3f).SetEase(Ease.InOutBounce));
+
+
+    }
+
     #region Upgrades
     private void UpgradeWithTimer()
     {
@@ -137,7 +185,7 @@ public class BoxUpgrades : MonoBehaviour
         if (_timer >= _timeGoal)
         {
             _timer = 0;
-            GameManager.Instance.AddClicks(2, false);
+            GameManager.Instance.AddClicks(_giftedClicksTimer, false);
         }
     }
 
@@ -151,7 +199,6 @@ public class BoxUpgrades : MonoBehaviour
             {
                 _currentClickNum = 0;
                 GameManager.Instance.AddClicks(_giftedClicks, false);
-
             }
         }
     }

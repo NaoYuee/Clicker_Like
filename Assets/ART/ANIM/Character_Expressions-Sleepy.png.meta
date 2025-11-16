@@ -1,13 +1,37 @@
 fileFormatVersion: 2
-guid: 335de02d3dedf544887c3131d305472e
+guid: bdc7ef2a060aabc4ea137e25e6403898
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2694753627630917136
-    second: Character_Squidge_0
+      213: -1057777202918360111
+    second: Character_Expressions-Sleepy_0
   - first:
-      213: -963882103677092459
-    second: Character_Squidge_1
+      213: -8361495518316334928
+    second: Character_Expressions-Sleepy_1
+  - first:
+      213: 3384812380862199504
+    second: Character_Expressions-Sleepy_2
+  - first:
+      213: -8969257498435667971
+    second: Character_Expressions-Sleepy_3
+  - first:
+      213: -6573831833145384659
+    second: Character_Expressions-Sleepy_4
+  - first:
+      213: -1160013372868243370
+    second: Character_Expressions-Sleepy_5
+  - first:
+      213: -5810029741625269665
+    second: Character_Expressions-Sleepy_6
+  - first:
+      213: 5906464686540648727
+    second: Character_Expressions-Sleepy_7
+  - first:
+      213: -443922094512843862
+    second: Character_Expressions-Sleepy_8
+  - first:
+      213: 2121328495323875711
+    second: Character_Expressions-Sleepy_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,66 +127,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character_Squidge_0
+      name: Character_Expressions-Sleepy_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 735
-        height: 1080
+        width: 316
+        height: 325
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline:
-      - - {x: -194.5, y: -70}
-        - {x: -101.5, y: -133}
-        - {x: -117.5, y: -260}
-        - {x: 6.5, y: -328}
-        - {x: 129.5, y: -249}
-        - {x: 92.5, y: -125}
-        - {x: 199.5, y: -63}
-        - {x: 202.5, y: 171}
-        - {x: 18.5, y: 282}
-        - {x: -197.5, y: 157}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49648cfe1e77a364f879ebd68d904bdb
-      internalID: -311596146
+      spriteID: 7a0e0b6a1cf3eff40973d50bd33d52c1
+      internalID: 750693319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Squidge_1
+      name: Character_Expressions-Sleepy_1
       rect:
         serializedVersion: 2
-        x: 735
+        x: 316
         y: 0
-        width: 735
-        height: 1080
+        width: 316
+        height: 325
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline:
-      - - {x: -204.5, y: -56}
-        - {x: -119.5, y: -144}
-        - {x: -136.5, y: -239}
-        - {x: -3.5, y: -332}
-        - {x: 147.5, y: -233}
-        - {x: 106.5, y: -139}
-        - {x: 199.5, y: -63}
-        - {x: 211.5, y: 170}
-        - {x: -22.5, y: 242}
-        - {x: -77.5, y: 188}
-        - {x: -210.5, y: 136}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ce2131c6f6a1da4e97eb2981f3ca586
-      internalID: -1669954794
+      spriteID: 2cb8828e8ae359a47a1dd7b9b1a41852
+      internalID: 2114781970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Expressions-Sleepy_2
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 0
+        width: 316
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dc34eafba1892a4caddfe78c2b51a85
+      internalID: 336533397
       vertices: []
       indices: 
       edges: []
@@ -171,7 +196,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4fe06730862a85b4181815b024cd8033
+    spriteID: 880041dc5d10adb4dacdecabed926756
     internalID: 0
     vertices: []
     indices: 
@@ -181,10 +206,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":735.0,"y":1080.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":316.0,"y":325.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Character_Squidge_0: -311596146
-      Character_Squidge_1: -1669954794
+      Character_Expressions-Sleepy_0: 750693319
+      Character_Expressions-Sleepy_1: 2114781970
+      Character_Expressions-Sleepy_2: 336533397
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
