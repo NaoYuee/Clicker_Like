@@ -96,7 +96,6 @@ public class BoxUpgrades : MonoBehaviour
         if (_object != null)
         {
             _objectSpriteRenderer = _object.GetComponent<SpriteRenderer>();
-            Debug.Log(_objectSpriteRenderer);
             Color _objectSpriteColor = _object.GetComponent<SpriteRenderer>().color;
 
             _objectSpriteColor.a = 0f;

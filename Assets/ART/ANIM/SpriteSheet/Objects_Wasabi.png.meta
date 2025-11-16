@@ -1,37 +1,16 @@
 fileFormatVersion: 2
-guid: 103a3ecd517483544bf8a050ba0d857c
+guid: 7523fc14c0edc754699b02e521c5ca6c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6526546580026552509
-    second: Character_Expressions_0
+      213: -8317122996255045290
+    second: Objects_Wasabi_0
   - first:
-      213: 8451087264995205899
-    second: Character_Expressions_1
+      213: -5277844332561952388
+    second: Objects_Wasabi_1
   - first:
-      213: 5913088529460441097
-    second: Character_Expressions_2
-  - first:
-      213: -2756829346743467510
-    second: Character_Expressions_3
-  - first:
-      213: 5929724480103392765
-    second: Character_Expressions_4
-  - first:
-      213: 440940826605493207
-    second: Character_Expressions_5
-  - first:
-      213: -2154136854541291697
-    second: Character_Expressions_6
-  - first:
-      213: -2767307438947843872
-    second: Character_Expressions_7
-  - first:
-      213: 4504871415589534845
-    second: Character_Expressions_8
-  - first:
-      213: 3514937033702150320
-    second: Character_Expressions_9
+      213: -1478000674096743376
+    second: Objects_Wasabi_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -127,90 +106,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character_Expressions_0
+      name: Objects_Wasabi_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 316
-        height: 325
+        width: 266
+        height: 221
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline:
-      - - {x: -75, y: -76.5}
-        - {x: 1, y: -33.5}
-        - {x: -6, y: -8.5}
-        - {x: -86, y: -58.5}
-      - - {x: 42, y: -7.5}
-        - {x: 106, y: 25.5}
-        - {x: 101, y: 46.5}
-        - {x: 34, y: 11.5}
-      - - {x: 11, y: -60.5}
-        - {x: 28, y: -65.5}
-        - {x: 41, y: -49.5}
-        - {x: 44, y: -15.5}
-        - {x: 8, y: -32.5}
-      - - {x: -53, y: -5.5}
-        - {x: -13, y: 20.5}
-        - {x: -26, y: 44.5}
-        - {x: -55, y: 8.5}
-      - - {x: 29, y: 44.5}
-        - {x: 69, y: 56.5}
-        - {x: 66, y: 67.5}
-        - {x: 29, y: 71.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6b5e014e6f752e47af6c3002adbf0b8
-      internalID: -52025397
+      spriteID: b2fffdf10a4a9324b87367763b16b7e4
+      internalID: -951354213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Expressions_1
+      name: Objects_Wasabi_1
       rect:
         serializedVersion: 2
-        x: 316
+        x: 266
         y: 0
-        width: 316
-        height: 325
+        width: 266
+        height: 221
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline:
-      - - {x: 13, y: -64.5}
-        - {x: 35, y: -62.5}
-        - {x: 46, y: -16.5}
-        - {x: 8, y: -33.5}
-      - - {x: 30, y: 41.5}
-        - {x: 73, y: 69.5}
-        - {x: 73, y: 78.5}
-        - {x: 29, y: 70.5}
-      - - {x: -66, y: 0.5}
-        - {x: -19, y: 18.5}
-        - {x: -20, y: 42.5}
-        - {x: -49, y: 24.5}
-      - - {x: -81, y: -69.5}
-        - {x: -50, y: -79.5}
-        - {x: -20, y: -61.5}
-        - {x: -2, y: -26.5}
-        - {x: 1, y: 20.5}
-        - {x: -86, y: -28.5}
-      - - {x: 37, y: -2.5}
-        - {x: 60, y: -16.5}
-        - {x: 89, y: -0.5}
-        - {x: 103, y: 35.5}
-        - {x: 105, y: 79.5}
-        - {x: 27, y: 32.5}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 838b5b87150e6da4ebc2df28f9b3450e
-      internalID: 1159058256
+      spriteID: 0087217aa48c14b40b4e8fbdeba50f1e
+      internalID: 597754996
       vertices: []
       indices: 
       edges: []
@@ -219,7 +153,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a4595210a3021e54bbe3efbde2695624
+    spriteID: a8b8891715ef9154ea0850591f6a44f5
     internalID: 0
     vertices: []
     indices: 
@@ -229,10 +163,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":316.0,"y":325.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":266.0,"y":221.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Character_Expressions_0: -52025397
-      Character_Expressions_1: 1159058256
+      Objects_Wasabi_0: -951354213
+      Objects_Wasabi_1: 597754996
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

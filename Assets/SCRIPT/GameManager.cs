@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 using DG.Tweening;
+using UnityEditor.Tilemaps;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -26,9 +28,11 @@ public class GameManager : MonoBehaviour
     private Vector3 _mousePos;
     private RaycastHit2D _raycastHit2D;
     [SerializeField] private LayerMask _objectsLayerMask;
+    [SerializeField] private LayerMask _itemLayerMask;
 
     [Header("Animations")]
     public List<AnimationHandler> _animations;
+    private int _rndSelectionAnim;
 
     [Header("Upgrades")]
     public List<UpgradeContent> _upgrades;
@@ -36,8 +40,12 @@ public class GameManager : MonoBehaviour
     public GameObject _parentUpgrades;
     public Action _onClick;
 
+    /*    [Header("Items")]
+        public List<>*/
+
     [Header("Feedbacks")]
-    public NewItems _newItems;
+    public NewItemsAnim _newItems;
+    public ItemsCollection[] _itemsCollections;
 
     public ParticleSystem _riceParticle;
 
@@ -53,11 +61,16 @@ public class GameManager : MonoBehaviour
     public float _onigiriRotateTo;
     public float _scaleMultiplier;
 
+    public RectTransform _scrollArrow;
+
+
     [Header("Sound")]
     private List<string> _audioList = new List<string>();
 
     public void Start()
     {
+        BounceArrow();
+
         _clickGauge.maxValue = _gaugeMax;
 
         foreach (var upgrade in _upgrades)
@@ -99,6 +112,23 @@ public class GameManager : MonoBehaviour
                 AddClicks(1);
             }
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 _worldPos = Camera.main.ScreenToWorldPoint(_mousePos);
+            Vector2 _point = new Vector2(_worldPos.x, _worldPos.y);
+
+            RaycastHit2D hit = Physics2D.Raycast(_point, Vector2.zero, 0f, _itemLayerMask);
+
+            if (hit.collider != null)
+            {
+                Debug.Log(hit.collider.name);
+                ItemChange _scriptFound = hit.collider.GetComponent<ItemChange>();
+                if (_scriptFound)
+                {
+                    _scriptFound.ChangeToNextItem();
+                }
+            }
+        }
     }
 
     public void Awake()
@@ -114,9 +144,17 @@ public class GameManager : MonoBehaviour
 
     public void ClickAnimation()
     {
-        foreach (var animations in _animations)
+        foreach (var _animations in _animations)
         {
-            animations._animator.Play(animations._animationClip);
+            if (_animations._rndAnimation == true)
+            {
+                _rndSelectionAnim = UnityEngine.Random.Range(0, _animations._animationNames.Count);
+                _animations._animator.Play(_animations._animationNames[_rndSelectionAnim]);
+            }
+            if (_animations._rndAnimation == false)
+            {
+                _animations._animator.Play(_animations._animationTransitionName);
+            }
         }
     }
 
@@ -166,6 +204,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void BounceArrow()
+    {
+
+        Sequence _sequenceBounce = DOTween.Sequence().SetLoops(-1, LoopType.Yoyo);
+        _sequenceBounce.Join(_scrollArrow.DOAnchorPosY(_scrollArrow.anchoredPosition.y + 8, 0.4f).SetEase(Ease.InOutSine));
+        _sequenceBounce.Join(_scrollArrow.DOShakeScale(0.2f, 0.2f, 1, 0.2f, true, ShakeRandomnessMode.Harmonic).SetEase(Ease.InOutSine));
+    }
+
     private void FeedbackItem()
     {
         Sequence _sequence = DOTween.Sequence();
@@ -182,6 +228,8 @@ public class GameManager : MonoBehaviour
 
         if (_gaugeProgression == _gaugeMax)
         {
+            _itemsCollections[0].AddSprite();
+            _itemsCollections[1].AddSprite();
             _newItems.PanelFadeIn();
             StartCoroutine(Fade());
         }
@@ -189,7 +237,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Fade()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.7f);
         _newItems.PanelFadeOut();
     }
 }
