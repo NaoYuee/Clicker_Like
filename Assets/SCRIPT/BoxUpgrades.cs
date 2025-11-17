@@ -1,22 +1,27 @@
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-using System.Collections.Generic;
 using DG.Tweening;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class BoxUpgrades : MonoBehaviour
 {
 
     [Header("UI")]
     public TMP_Text _title;
-    public TMP_Text _priceText;
+    public string _hiddenTitle;
+    private string _titleStored;
+
     public TMP_Text _description;
+    public string _hiddenDescription;
+    private string _descriptionStored;
+    public TMP_Text _canUpgradeText;
+
+    public TMP_Text _priceText;
     public Image _objectIcon;
     [SerializeField] private Image _upgradeBoxUI;
-    public string _hiddenTitle;
-    public string _hiddenDescription;
-    private string _titleStored;
-    private string _descriptionStored;
     [SerializeField] private Color _hiddenColor;
 
     [Header("Objects")]
@@ -24,51 +29,46 @@ public class BoxUpgrades : MonoBehaviour
     private SpriteRenderer _objectSpriteRenderer;
     public float _scaleFactor;
 
+    [Header("Feedback")]
+    private RectTransform _uiBoxUpgrade;
+    private Button _uiBoxButton;
+    public Color _uiBoxColor;
+    public float _strength;
+    public float _duration;
+    public int _vibrato;
+
     [Header("Price")]
     private int _startPrice;
     int _price;
     public float _priceMultiplier;
     private int _upgradeLvl = 0;
+    private int _startUpgradeLvl = 0;
 
     [Header("Upgrade")]
     private bool _isPurchased;
+
+    private UpgradeContent _allUpgrades;
 
     public UpgradeType _upgradeType;
 
     private int _currentClickNum;
     private int _numberMax = 3;
-    private int _addedClicks;
     private int _giftedClicks = 2;
+
+
     private int _giftedClicksTimer = 2;
-
-
     private float _timer;
     private float _timeGoal = 3f;
 
 
-    #region to do 
-    /*
-    starting price (+ text visual)
-    When bought lvl goes up by one and the price goes up by price multiplier (+ text visual)
-    each upgrade has a different functionnality:
-    1 click per second -- will have to create a counter that keeps track of the time
-    2 clicks after 3 clicks -- will have to keep track of the number of clicks since the moment of the upgrade (number of clicks +3) and then once 3 clicks is obtained set it back to 0
-    5 clicks once every 10 clicks -- same as previous
-    20 clicks once every 50 clicks
-    */
-
-    /*
-    Once the upgrade is bought start counting (numberAdd) from (currentClickNum) and once that numberAdd reaches the max add (addClicks).
-    Reset to 0 (numberAdd) once it has reached it's maximum (numberAddMax))
-    */
-
-    /* Dans update faire en sorte qu'il y est un temps à atteindre (_timeGoal) et une variable de timer en privée (_timer). */
-
-    #endregion
-
     private void Start()
     {
         UpdateUI();
+
+        _uiBoxUpgrade = this.GetComponent<RectTransform>();
+        _uiBoxButton = this.GetComponent<Button>();
+        _canUpgradeText.color = _uiBoxColor;
+
         if (_upgradeType == UpgradeType.UpgradePerClick)
         {
             GameManager.Instance._onClick += UpgradePerClicks;
@@ -113,35 +113,77 @@ public class BoxUpgrades : MonoBehaviour
         _priceText.text = upgrade._priceText;
         _startPrice = int.Parse(_priceText.text);
         _description.text = upgrade._description;
-        _descriptionStored = _description.text;
+
 
         _objectIcon.sprite = upgrade._objectIcon;
         _upgradeType = upgrade._upgradeType;
 
+        _descriptionStored = DescriptionInitialize();
+        _description.text = _descriptionStored;
+
         //Upgrade Objects
         _object = upgrade._object;
 
-        //Upgrade Type Values
-        _timeGoal = upgrade._timeGoal;
-        _giftedClicksTimer = upgrade._giftedClicksTimer;
+        _numberMax = upgrade._valueList[0]._numberMax;
+        _giftedClicks = upgrade._valueList[0]._giftedClicks;
+        _timeGoal = upgrade._valueList[0]._timeGoal;
+        _giftedClicksTimer = upgrade._valueList[0]._giftedClicksTimer;
 
-        _numberMax = upgrade._numberMax;
-        _giftedClicks = upgrade._giftedClicks;
+        _allUpgrades = upgrade;
+    }
+
+    public string DescriptionInitialize()
+    {
+        if (_upgradeType == UpgradeType.UpgradePerClick)
+        {
+            return $"Eat {_numberMax} onigiri to get {_giftedClicks} free";
+        }
+        if (_upgradeType == UpgradeType.UpgradeTimer)
+        {
+            return $"{_giftedClicksTimer} onigiris every {_timeGoal} seconds";
+        }
+        return "ERROR";
+    }
+
+    public void UpdateDescription(UpgradeContent upgrade)
+    {
+        if (upgrade._valueList.Count >= _upgradeLvl)
+        {
+            _numberMax = upgrade._valueList[_upgradeLvl - 1]._numberMax;
+            _giftedClicks = upgrade._valueList[_upgradeLvl - 1]._giftedClicks;
+            _timeGoal = upgrade._valueList[_upgradeLvl - 1]._timeGoal;
+            _giftedClicksTimer = upgrade._valueList[_upgradeLvl - 1]._giftedClicksTimer;
+
+            _descriptionStored = DescriptionInitialize();
+            _description.text = _descriptionStored;
+
+
+        }
+        else
+        {
+            _canUpgradeText.gameObject.SetActive(false);
+            _uiBoxButton.interactable = false;
+        }
     }
 
     private void UpdateUI()
     {
         _priceText.text = CalculatePrice().ToString();
-        _isPurchased = _upgradeLvl > 0;
+        _isPurchased = _upgradeLvl > _startUpgradeLvl;
         if (_isPurchased == false)
         {
+            _canUpgradeText.gameObject.SetActive(false);
+            _canUpgradeText.DOColor(_uiBoxColor, _duration).SetEase(Ease.OutFlash).SetLoops(-1, LoopType.Yoyo);
             _objectIcon.color = Color.black;
             _upgradeBoxUI.color = _hiddenColor;
+
             _title.text = _hiddenTitle;
             _description.text = _hiddenDescription;
+
         }
         else
         {
+            _canUpgradeText.gameObject.SetActive(true);
             _objectIcon.color = Color.white;
             _upgradeBoxUI.color = Color.white;
             _title.text = _titleStored;
@@ -162,7 +204,9 @@ public class BoxUpgrades : MonoBehaviour
         if (purchaseSuccess)
         {
             _upgradeLvl++;
+            UpdateDescription(_allUpgrades);
             UpdateUI();
+            UIFeedback();
         }
     }
 
@@ -175,6 +219,12 @@ public class BoxUpgrades : MonoBehaviour
         _sequence.Join(_object.transform.DOScale(_scaleFactor, 0.3f).SetEase(Ease.InOutBounce));
 
 
+    }
+
+    private void UIFeedback()
+    {
+        Sequence _sequenceBounce = DOTween.Sequence();
+        _sequenceBounce.Join(_uiBoxUpgrade.DOShakeScale(_duration, _strength, _vibrato, 0.2f, true, ShakeRandomnessMode.Harmonic).SetEase(Ease.InOutSine));
     }
 
     #region Upgrades
@@ -200,6 +250,11 @@ public class BoxUpgrades : MonoBehaviour
                 GameManager.Instance.AddClicks(_giftedClicks, false);
             }
         }
+    }
+
+    public void UpgradePerObjects()
+    {
+
     }
 
     #endregion

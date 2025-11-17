@@ -23,6 +23,9 @@ public class ItemsCollection : MonoBehaviour
 
     [Header("Feedback")]
     private RectTransform _itemBoxTransform;
+    public float _strength;
+    public float _duration;
+    public int _vibrato;
 
     private void Start()
     {
@@ -64,6 +67,6 @@ public class ItemsCollection : MonoBehaviour
     {
         _itemBoxTransform = _itemBox.GetComponent<RectTransform>();
         Sequence _sequence = DOTween.Sequence();
-        _sequence.Join(_itemBoxTransform.DOShakeScale(0.3f, 3f, 6, 1f, true, ShakeRandomnessMode.Harmonic).SetEase(Ease.InOutSine));
+        _sequence.Join(_itemBoxTransform.DOShakeScale(_duration, _strength, _vibrato, 1f, true, ShakeRandomnessMode.Harmonic).SetEase(Ease.InOutSine));
     }
 }

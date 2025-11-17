@@ -5375,7 +5375,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1836, y: -0.0954, z: 0}
-  m_LocalScale: {x: 1.1146, y: 1.1683, z: 1}
+  m_LocalScale: {x: 2.9033098, y: 1.1683, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6103,8 +6103,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.7878, y: 7.0554}
-  m_SizeDelta: {x: 186.3445, y: 261.6935}
+  m_AnchoredPosition: {x: 8.1194, y: 7.0554}
+  m_SizeDelta: {x: 221.2902, y: 261.6935}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464993468
 MonoBehaviour:
@@ -6779,7 +6779,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -7415,6 +7415,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7312062052864610189}
     - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: _itemSceneHandler.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: _itemCollectionScript.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -7427,6 +7431,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7312062052864610189}
     - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: _itemSceneHandler.Array.data[2]._itemName
+      value: Fish Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: _itemSceneHandler.Array.data[2]._itemSprite
+      value: 
+      objectReference: {fileID: 448320081, guid: b13c96ff507b8674c8e01020ce875dd8, type: 3}
+    - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: _itemSceneHandler.Array.data[0]._itemController
       value: 
       objectReference: {fileID: 9100000, guid: 2e9b5fc2f0e875044867758cb902fde9, type: 2}
@@ -7435,6 +7447,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 4afaad3fd95aace458ad73adf60fddbf, type: 2}
     - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: _itemSceneHandler.Array.data[2]._itemController
+      value: 
+      objectReference: {fileID: 9100000, guid: f80ad64174fb9d845bf460431c16eef0, type: 2}
+    - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: _itemSceneHandler.Array.data[0]._thumbnailSprite
       value: 
       objectReference: {fileID: -1868592074, guid: 5370d7046141c08419a83f3dfb7602f0, type: 3}
@@ -7442,13 +7458,25 @@ PrefabInstance:
       propertyPath: _itemSceneHandler.Array.data[1]._thumbnailSprite
       value: 
       objectReference: {fileID: 1456929817, guid: d2ef0683b91790e45ba5ac10540178bd, type: 3}
+    - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: _itemSceneHandler.Array.data[2]._thumbnailSprite
+      value: 
+      objectReference: {fileID: 448320081, guid: b13c96ff507b8674c8e01020ce875dd8, type: 3}
+    - target: {fileID: 6879267024541168280, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: m_Size.x
+      value: 7.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879267024541168280, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: m_Size.y
+      value: 5.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6879267024541168280, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1844888200, guid: d2ef0683b91790e45ba5ac10540178bd, type: 3}
+      objectReference: {fileID: 448320081, guid: b13c96ff507b8674c8e01020ce875dd8, type: 3}
     - target: {fileID: 6879267024541168280, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6879267024541168280, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_SortingOrder
@@ -7457,7 +7485,7 @@ PrefabInstance:
     - target: {fileID: 7263461525918693522, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 4afaad3fd95aace458ad73adf60fddbf, type: 2}
+      objectReference: {fileID: 9100000, guid: f80ad64174fb9d845bf460431c16eef0, type: 2}
     - target: {fileID: 8192499761261364725, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7497,6 +7525,14 @@ PrefabInstance:
     - target: {fileID: 8192499761261364725, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991472346530908532, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.652
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991472346530908532, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.039
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7617,6 +7653,9 @@ MonoBehaviour:
   _itemBox: {fileID: 875875555}
   _apologies: {fileID: 405869448}
   _itemChange: {fileID: 605981530}
+  _strength: 0.8
+  _duration: 1.2
+  _vibrato: 8
 --- !u!1 &1155518830
 GameObject:
   m_ObjectHideFlags: 0
@@ -8120,8 +8159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 343.0065, y: -120.15558}
-  m_SizeDelta: {x: 107.773, y: 296.0471}
+  m_AnchoredPosition: {x: 287.8, y: -146.7}
+  m_SizeDelta: {x: 107.77301, y: 296.04712}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1251586690
 MonoBehaviour:
@@ -8801,9 +8840,9 @@ RectTransform:
   - {fileID: 2039662563}
   m_Father: {fileID: 837628077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391.93625, y: -53.399292}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 141.4, y: -53.399292}
   m_SizeDelta: {x: 282.7943, y: 474.0216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1640311901
@@ -14788,6 +14827,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873705055}
   m_CullTransparentMesh: 1
+--- !u!95 &1999056201 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8132294247148656662, guid: f2458f8c227e6a94e9f33eb973cb4e0d, type: 3}
+  m_PrefabInstance: {fileID: 1801682145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2015729792
 GameObject:
   m_ObjectHideFlags: 0
@@ -15451,6 +15495,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _animations:
+  - _animator: {fileID: 1999056201}
+    _animationTransitionName: ANIM_LittleChara_Squidge
+    _rndAnimation: 0
+    _animationNames: []
   - _animator: {fileID: 673033502}
     _animationTransitionName: ANIM_Chopping
     _rndAnimation: 0
@@ -15474,58 +15522,55 @@ MonoBehaviour:
     - ANIM_Ginger_Eyes
     - ANIM_Ginger_Turn
   - _animator: {fileID: 758095549}
-    _animationTransitionName: ANIM_Wasabi_Move
-    _rndAnimation: 0
-    _animationNames:
-    - ANIM_Ginger_Eyes
-    - ANIM_Ginger_Turn
-  - _animator: {fileID: 758095549}
     _animationTransitionName: ANIM_Move
     _rndAnimation: 0
-    _animationNames:
-    - ANIM_Ginger_Eyes
-    - ANIM_Ginger_Turn
+    _animationNames: []
   _upgrades:
   - _title: Wasabi
     _priceText: 10
-    _description: 2 onigiris every 3 seconds
+    _description: 
     _objectIcon: {fileID: 21300000, guid: 29d0866dfe1540c4f8ddac6847eccc19, type: 3}
-    _upgradeType: 0
+    _upgradeType: 1
     _object: {fileID: 391420499}
-    _timeGoal: 3
-    _giftedClicksTimer: 2
-    _numberMax: 0
-    _giftedClicks: 0
+    _valueList:
+    - _timeGoal: 0
+      _giftedClicksTimer: 0
+      _numberMax: 3
+      _giftedClicks: 2
+    - _timeGoal: 0
+      _giftedClicksTimer: 0
+      _numberMax: 3
+      _giftedClicks: 5
   - _title: Ginger
     _priceText: 15
-    _description: get 3 onigiris for 2 free
+    _description: 
     _objectIcon: {fileID: 21300000, guid: 9161927643d68714bb5dc87a92f335c8, type: 3}
-    _upgradeType: 1
+    _upgradeType: 0
     _object: {fileID: 1523839180}
-    _timeGoal: 0
-    _giftedClicksTimer: 0
-    _numberMax: 3
-    _giftedClicks: 2
+    _valueList:
+    - _timeGoal: 3
+      _giftedClicksTimer: 2
+      _numberMax: 0
+      _giftedClicks: 0
+    - _timeGoal: 3
+      _giftedClicksTimer: 8
+      _numberMax: 0
+      _giftedClicks: 0
   - _title: Soy Sauce
     _priceText: 20
-    _description: Gives +1 every second
+    _description: 
     _objectIcon: {fileID: 21300000, guid: fc18dd9c3dae00448b1a5d1e78dbc219, type: 3}
     _upgradeType: 0
     _object: {fileID: 415452545}
-    _timeGoal: 1
-    _giftedClicksTimer: 1
-    _numberMax: 0
-    _giftedClicks: 0
-  - _title: Wasabi
-    _priceText: 30
-    _description: Gives +1 every second
-    _objectIcon: {fileID: 21300000, guid: eff63b81c4388834595e3a811863914a, type: 3}
-    _upgradeType: 0
-    _object: {fileID: 415452545}
-    _timeGoal: 1
-    _giftedClicksTimer: 10
-    _numberMax: 0
-    _giftedClicks: 0
+    _valueList:
+    - _timeGoal: 1
+      _giftedClicksTimer: 5
+      _numberMax: 0
+      _giftedClicks: 0
+    - _timeGoal: 1
+      _giftedClicksTimer: 10
+      _numberMax: 0
+      _giftedClicks: 0
   _upgradePrefabUI: {fileID: 7217637179844685190, guid: 232e0f49a541c284486c2c16a5c4d635, type: 3}
   _parentUpgrades: {fileID: 229635620}
   _newItems: {fileID: 1251586692}
@@ -15558,6 +15603,9 @@ MonoBehaviour:
   _itemBox: {fileID: 2697340738120681371}
   _apologies: {fileID: 405869448}
   _itemChange: {fileID: 758095550}
+  _strength: 0.8
+  _duration: 1.2
+  _vibrato: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

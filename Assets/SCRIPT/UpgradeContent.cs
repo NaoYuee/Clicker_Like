@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,8 +20,5 @@ public class UpgradeContent
     public GameObject _object;
 
     [Header("Values")]
-    public float _timeGoal;
-    public int _giftedClicksTimer;
-    public int _numberMax;
-    public int _giftedClicks;
+    public List<ValueUpgrades> _valueList;
 }
