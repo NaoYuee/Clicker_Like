@@ -648,7 +648,7 @@ MonoBehaviour:
   _strength: 0.27
   _duration: 0.96
   _vibrato: 6
-  _priceMultiplier: 1.2
+  _priceMultiplier: 1.5
   _upgradeType: 0
 --- !u!1 &8510323392384762302
 GameObject:
