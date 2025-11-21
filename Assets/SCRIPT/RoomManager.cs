@@ -1,12 +1,20 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 
 public class RoomManager : MonoBehaviour
 {
-    public int _clickTotal;
+    [SerializeField] private Animator _transitionAnimator;
 
-    public void SceneChange (string _sceneName)
+    public void PlayAnimationEnd(string _sceneName)
     {
+        _transitionAnimator.Play("ANIM_Transition_Close");
+        StartCoroutine(SceneChange(_sceneName));
+    }
+
+    private IEnumerator SceneChange (string _sceneName)
+    {
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene(_sceneName);
     }
 
