@@ -15,6 +15,7 @@ public class UpgradeContent
 
     [Header("Upgrade Type")]
     public UpgradeType _upgradeType;
+    public UpgradeObject _upgradeObject;
 
     [Header("Objects")]
     public GameObject _object;

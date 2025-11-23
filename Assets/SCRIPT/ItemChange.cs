@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class ItemChange : MonoBehaviour
@@ -24,6 +23,7 @@ public class ItemChange : MonoBehaviour
     private Color _spriteColor;
     public float _chooseAlpha;
     private int _indexItem = 0;
+
 
     private void Start()
     {
@@ -93,9 +93,16 @@ public class ItemChange : MonoBehaviour
 
     public void ChangeToNextItem()
     {
-        _indexItem++;
-        _indexItem %= _stockedItem.Count;
+        if (_stockedItem.Count == 0)
+        {
+            Debug.Log("Nothing yet");
+        }
+        else
+        {
+            _indexItem++;
+            _indexItem %= _stockedItem.Count;
+        }
 
-        ReplaceItem(_stockedItem[_indexItem], false);   
+        ReplaceItem(_stockedItem[_indexItem], false);
     }
 }

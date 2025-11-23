@@ -20,7 +20,8 @@ public class AudioManager : MonoBehaviour
     public void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-    }
+        _audioSource.volume = 0.5f;
+}
 
     public void PlaySFX(string _title)
     {
@@ -46,5 +47,15 @@ public class AudioManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void StopMusic()
+    {
+        _audioSource.Stop();
+    }
+
+    public void PlayMusic()
+    {
+        _audioSource.Play();
     }
 }

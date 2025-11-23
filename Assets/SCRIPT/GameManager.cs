@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 using DG.Tweening;
-using UnityEditor.Tilemaps;
 
 
 public class GameManager : MonoBehaviour
@@ -19,8 +18,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Gauge Progession")]
     public Slider _clickGauge;
-    private float _gaugeProgression;
-    private int _gaugeMax = 10;
+    [SerializeField] private float _gaugeProgression;
+    [SerializeField] private int _gaugeMax = 10;
     public int _gaugeMultiplier;
 
     [Header("Clickable Objects")]
@@ -33,6 +32,11 @@ public class GameManager : MonoBehaviour
     [Header("Animations")]
     public List<AnimationHandler> _animations;
     private int _rndSelectionAnim;
+    public Animator _mouseAnimatorLeft;
+    public Animator _mouseAnimatorRight;
+    private AnimationClip _mouseClip;
+    public GameObject _clickLeft;
+    public GameObject _clickRight;
 
     [Header("Upgrades")]
     public List<UpgradeContent> _upgrades;
@@ -48,6 +52,9 @@ public class GameManager : MonoBehaviour
     public ItemsCollection[] _itemsCollections;
 
     public ParticleSystem _riceParticle;
+    public ParticleSystem _achievementParticle;
+    public ParticleSystem _clickParticle;
+    public ParticleSystem _changeParticle;
 
     public RectTransform _boardTransform;
     private Vector3 _originalBoardScale;
@@ -65,7 +72,7 @@ public class GameManager : MonoBehaviour
 
 
     [Header("Sound")]
-    private List<string> _audioList = new List<string>();
+    [HideInInspector] public List<string> _audioList = new List<string>();
 
     public void Start()
     {
@@ -81,6 +88,12 @@ public class GameManager : MonoBehaviour
             _boxUpgrades.Initialize(upgrade);
             _boxUpgrades.InitializeObjects();
         }
+
+        _mouseAnimatorLeft.Play("ANIM_Mouse_Left");
+        _mouseAnimatorLeft.SetBool("_stopLeft", false);
+        _mouseAnimatorRight.SetBool("_stopRight", false);
+        _clickRight.SetActive(false);
+
 
         #region Onigiri Anim
         _originalScale = _onigiriTransform.localScale;
@@ -105,10 +118,15 @@ public class GameManager : MonoBehaviour
             Vector3 _worldPos = Camera.main.ScreenToWorldPoint(_mousePos);
             Vector2 _point = new Vector2(_worldPos.x, _worldPos.y);
 
+            _clickParticle.transform.position = _point;
+            _clickParticle.Play();
+
             RaycastHit2D hit = Physics2D.Raycast(_point, Vector2.zero, 0f, _objectsLayerMask);
 
             if (hit.collider != null)
             {
+                _clickParticle.Stop();
+                StopMouseAnim(_mouseAnimatorLeft, _clickLeft, 10f, "_stopLeft", true);
                 AddClicks(1);
             }
         }
@@ -117,15 +135,21 @@ public class GameManager : MonoBehaviour
             Vector3 _worldPos = Camera.main.ScreenToWorldPoint(_mousePos);
             Vector2 _point = new Vector2(_worldPos.x, _worldPos.y);
 
+
             RaycastHit2D hit = Physics2D.Raycast(_point, Vector2.zero, 0f, _itemLayerMask);
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.name);
                 ItemChange _scriptFound = hit.collider.GetComponent<ItemChange>();
                 if (_scriptFound)
                 {
+                    StopMouseAnim(_mouseAnimatorRight, _clickRight, 3f, "_stopRight", true);
                     _scriptFound.ChangeToNextItem();
+                    if (_gaugeProgression >= 30)
+                    {
+                        _changeParticle.transform.position = _point;
+                        _changeParticle.Play();
+                    }
                 }
             }
         }
@@ -135,6 +159,20 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
+
+    #region Animation Mouse
+    private void StopMouseAnim(Animator _mouseAnimator, GameObject _clickObj, float _time, string _condition, bool _state)
+    {
+        StartCoroutine(StopWait(_time));
+        _mouseAnimator.SetBool(_condition, _state);
+        _clickObj.SetActive(false);
+    }
+
+    private IEnumerator StopWait(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+    }
+    #endregion
 
     public void AddAudioToList()
     {
@@ -179,6 +217,7 @@ public class GameManager : MonoBehaviour
         _clicks = _clicks + _addedClicks;
         UpdateCounter();
         Gauge();
+        Debug.Log("Gauge");
         FeedbackItem();
         ClickAnimation();
         AudioManager.Instance.PlayGroupSFX(_audioList);
@@ -188,10 +227,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void TutoRightClick()
+    {
+        if (_gaugeMax == 30 && _gaugeProgression >= 30)
+        {
+            _clickRight.SetActive(true);
+            _mouseAnimatorRight.SetBool("_isRight", true);
+        }
+    }
+
     private void Gauge()
     {
+        if (_gaugeProgression == _gaugeMax - 1)
+        {
+            AudioManager.Instance.PlaySFX("Bell Finish");
+            _achievementParticle.Play();
+        }
         if (_gaugeProgression % _gaugeMax == 0 && _gaugeProgression != 0)
         {
+
+            TutoRightClick();
+            Debug.Log(_gaugeProgression);
+
             _gaugeMax = _gaugeMax * _gaugeMultiplier;
             _clickGauge.maxValue = _gaugeMax;
             _gaugeProgression = 0;
@@ -231,11 +288,13 @@ public class GameManager : MonoBehaviour
             _itemsCollections[0].AddSprite();
             _itemsCollections[1].AddSprite();
             _newItems.PanelFadeIn();
+            Debug.Log(_gaugeProgression);
+            Debug.Log(_gaugeMax);
             StartCoroutine(Fade());
         }
     }
 
-    IEnumerator Fade()
+    private IEnumerator Fade()
     {
         yield return new WaitForSeconds(2.7f);
         _newItems.PanelFadeOut();

@@ -18,6 +18,8 @@ public class BoxUpgrades : MonoBehaviour
     public string _hiddenDescription;
     private string _descriptionStored;
     public TMP_Text _canUpgradeText;
+    [SerializeField] private Color _boxOverlayColor;
+    [SerializeField] private Image _boxOverlay;
 
     public TMP_Text _priceText;
     public Image _objectIcon;
@@ -49,7 +51,8 @@ public class BoxUpgrades : MonoBehaviour
 
     private UpgradeContent _allUpgrades;
 
-    public UpgradeType _upgradeType;
+    [SerializeField] private UpgradeType _upgradeType;
+    [SerializeField] private UpgradeObject _upgradeObject;
 
     private int _currentClickNum;
     private int _numberMax = 3;
@@ -68,6 +71,9 @@ public class BoxUpgrades : MonoBehaviour
         _uiBoxUpgrade = this.GetComponent<RectTransform>();
         _uiBoxButton = this.GetComponent<Button>();
         _canUpgradeText.color = _uiBoxColor;
+        _boxOverlayColor = _boxOverlay.color;
+        _boxOverlayColor.a = 0f;
+        _boxOverlay.color = _boxOverlayColor;
 
         if (_upgradeType == UpgradeType.UpgradePerClick)
         {
@@ -117,6 +123,7 @@ public class BoxUpgrades : MonoBehaviour
 
         _objectIcon.sprite = upgrade._objectIcon;
         _upgradeType = upgrade._upgradeType;
+        _upgradeObject = upgrade._upgradeObject;
 
         _descriptionStored = DescriptionInitialize();
         _description.text = _descriptionStored;
@@ -156,11 +163,12 @@ public class BoxUpgrades : MonoBehaviour
 
             _descriptionStored = DescriptionInitialize();
             _description.text = _descriptionStored;
-
-
+            _canUpgradeText.gameObject.SetActive(true);
         }
         else
         {
+            _boxOverlayColor.a = 0.5f;
+            _boxOverlay.color = _boxOverlayColor;
             _canUpgradeText.gameObject.SetActive(false);
             _uiBoxButton.interactable = false;
         }
@@ -173,17 +181,14 @@ public class BoxUpgrades : MonoBehaviour
         if (_isPurchased == false)
         {
             _canUpgradeText.gameObject.SetActive(false);
-            _canUpgradeText.DOColor(_uiBoxColor, _duration).SetEase(Ease.OutFlash).SetLoops(-1, LoopType.Yoyo);
             _objectIcon.color = Color.black;
             _upgradeBoxUI.color = _hiddenColor;
 
             _title.text = _hiddenTitle;
             _description.text = _hiddenDescription;
-
         }
         else
         {
-            _canUpgradeText.gameObject.SetActive(true);
             _objectIcon.color = Color.white;
             _upgradeBoxUI.color = Color.white;
             _title.text = _titleStored;
@@ -203,6 +208,7 @@ public class BoxUpgrades : MonoBehaviour
         bool purchaseSuccess = GameManager.Instance.PurchaseAction(_price);
         if (purchaseSuccess)
         {
+            AudioManager.Instance.PlaySFX("Plate");
             _upgradeLvl++;
             UpdateDescription(_allUpgrades);
             UpdateUI();
@@ -218,9 +224,19 @@ public class BoxUpgrades : MonoBehaviour
         _sequence.Join(_objectSpriteRenderer.DOFade(1f, 0.5f));
         _sequence.Join(_object.transform.DOScale(_scaleFactor, 0.3f).SetEase(Ease.InOutBounce));
 
-
+        AddSFXList(UpgradeObject.Wasabi, "Wasabi");
+        AddSFXList(UpgradeObject.Ginger, "Ginger");
+        AddSFXList(UpgradeObject.SoySauce, "Soy Sauce");
     }
 
+
+    private void AddSFXList(UpgradeObject _object, string _sfxName)
+    {
+        if (_upgradeObject == _object)
+        {
+            GameManager.Instance._audioList.Add(_sfxName);
+        }
+    }
     private void UIFeedback()
     {
         Sequence _sequenceBounce = DOTween.Sequence();
