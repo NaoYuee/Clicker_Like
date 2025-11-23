@@ -35,6 +35,7 @@ public class BoxUpgrades : MonoBehaviour
     private RectTransform _uiBoxUpgrade;
     private Button _uiBoxButton;
     public Color _uiBoxColor;
+
     public float _strength;
     public float _duration;
     public int _vibrato;
@@ -68,8 +69,10 @@ public class BoxUpgrades : MonoBehaviour
     {
         UpdateUI();
 
+
         _uiBoxUpgrade = this.GetComponent<RectTransform>();
         _uiBoxButton = this.GetComponent<Button>();
+
         _canUpgradeText.color = _uiBoxColor;
         _boxOverlayColor = _boxOverlay.color;
         _boxOverlayColor.a = 0f;
@@ -239,8 +242,8 @@ public class BoxUpgrades : MonoBehaviour
     }
     private void UIFeedback()
     {
-        Sequence _sequenceBounce = DOTween.Sequence();
-        _sequenceBounce.Join(_uiBoxUpgrade.DOShakeScale(_duration, _strength, _vibrato, 0.2f, true, ShakeRandomnessMode.Harmonic).SetEase(Ease.InOutSine));
+        _uiBoxUpgrade.DOComplete();
+        _uiBoxUpgrade.DOShakeScale(_duration, _strength, _vibrato, 0.2f, true, ShakeRandomnessMode.Harmonic).SetEase(Ease.InOutSine);
     }
 
     #region Upgrades

@@ -5812,7 +5812,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'No More Items
+  m_text: 'We are sold out.
 
 
     We deeply apologize.'
@@ -6267,6 +6267,10 @@ MonoBehaviour:
     _thumbnailSprite: {fileID: -1140422095, guid: 1dae8857444f4fb4bac977cacec5ebd1, type: 3}
     _itemSprite: {fileID: -1140422095, guid: 1dae8857444f4fb4bac977cacec5ebd1, type: 3}
     _itemController: {fileID: 9100000, guid: ab4c8dba9cb2281458a4d0c013db0f9d, type: 2}
+  - _itemName: Crazy
+    _thumbnailSprite: {fileID: -606034191, guid: 2f621f6644c46d24fbb30a02e226ffee, type: 3}
+    _itemSprite: {fileID: -606034191, guid: 2f621f6644c46d24fbb30a02e226ffee, type: 3}
+    _itemController: {fileID: 9100000, guid: 21568c18800d755408b9dd5b9de9189b, type: 2}
   _stockedItem: []
   _itemCollectionScript: {fileID: 1106396526}
   _itemSpriteRenderer: {fileID: 605981529}
@@ -6420,7 +6424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000018835, y: 34}
+  m_AnchoredPosition: {x: -2.5, y: 34}
   m_SizeDelta: {x: 132.8173, y: 176.2617}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &673033499
@@ -7526,7 +7530,7 @@ PrefabInstance:
       objectReference: {fileID: 7312062052864610189}
     - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: _itemSceneHandler.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: _itemCollectionScript.Array.size
@@ -7545,9 +7549,17 @@ PrefabInstance:
       value: Fish Egg
       objectReference: {fileID: 0}
     - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: _itemSceneHandler.Array.data[3]._itemName
+      value: Seaweed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: _itemSceneHandler.Array.data[2]._itemSprite
       value: 
       objectReference: {fileID: 448320081, guid: b13c96ff507b8674c8e01020ce875dd8, type: 3}
+    - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: _itemSceneHandler.Array.data[3]._itemSprite
+      value: 
+      objectReference: {fileID: 2059520613, guid: 1157e4863489d224ba87adba66f4da9e, type: 3}
     - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: _itemSceneHandler.Array.data[0]._itemController
       value: 
@@ -7561,6 +7573,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: f80ad64174fb9d845bf460431c16eef0, type: 2}
     - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: _itemSceneHandler.Array.data[3]._itemController
+      value: 
+      objectReference: {fileID: 9100000, guid: d913408eabce81a438ee51865b051b9d, type: 2}
+    - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: _itemSceneHandler.Array.data[0]._thumbnailSprite
       value: 
       objectReference: {fileID: -1868592074, guid: 5370d7046141c08419a83f3dfb7602f0, type: 3}
@@ -7572,6 +7588,10 @@ PrefabInstance:
       propertyPath: _itemSceneHandler.Array.data[2]._thumbnailSprite
       value: 
       objectReference: {fileID: 448320081, guid: b13c96ff507b8674c8e01020ce875dd8, type: 3}
+    - target: {fileID: 2719144385066909523, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
+      propertyPath: _itemSceneHandler.Array.data[3]._thumbnailSprite
+      value: 
+      objectReference: {fileID: 2059520613, guid: 1157e4863489d224ba87adba66f4da9e, type: 3}
     - target: {fileID: 6879267024541168280, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_Size.x
       value: 7.36
@@ -7583,7 +7603,7 @@ PrefabInstance:
     - target: {fileID: 6879267024541168280, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 448320081, guid: b13c96ff507b8674c8e01020ce875dd8, type: 3}
+      objectReference: {fileID: 2059520613, guid: 1157e4863489d224ba87adba66f4da9e, type: 3}
     - target: {fileID: 6879267024541168280, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -7595,7 +7615,7 @@ PrefabInstance:
     - target: {fileID: 7263461525918693522, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: f80ad64174fb9d845bf460431c16eef0, type: 2}
+      objectReference: {fileID: 9100000, guid: d913408eabce81a438ee51865b051b9d, type: 2}
     - target: {fileID: 8192499761261364725, guid: 6fc07a0e78962b04ba6fc3d24fc9e82e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9032,7 +9052,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.62
+      scalar: 3.15
       minScalar: 1.88
       maxCurve:
         serializedVersion: 2
@@ -9150,8 +9170,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.81
-      minScalar: 0.55
+      scalar: 1.26
+      minScalar: 1.08
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9610,8 +9630,8 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
-    sphericalDirectionAmount: 0
+    randomDirectionAmount: 1
+    sphericalDirectionAmount: 1
     randomPositionAmount: 0
     radius:
       value: 0.22
@@ -10289,9 +10309,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     mode: 1
-    timeMode: 0
+    timeMode: 1
     fps: 30
     frameOverTime:
       serializedVersion: 2
@@ -10304,21 +10324,21 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 1
+          inSlope: 2
+          outSlope: 2
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: 1
+          inSlope: 0
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -10408,8 +10428,8 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 722470189, guid: 4e486ea023db8f042885bd4c1e735c8b, type: 3}
-    - sprite: {fileID: 600702772, guid: 4e486ea023db8f042885bd4c1e735c8b, type: 3}
+    - sprite: {fileID: -2099446348, guid: 643b037e702078d43b33aacf768fe193, type: 3}
+    - sprite: {fileID: 1460659440, guid: 643b037e702078d43b33aacf768fe193, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -25669,8 +25689,16 @@ MonoBehaviour:
       _giftedClicksTimer: 0
       _numberMax: 3
       _giftedClicks: 5
+    - _timeGoal: 0
+      _giftedClicksTimer: 0
+      _numberMax: 3
+      _giftedClicks: 8
+    - _timeGoal: 0
+      _giftedClicksTimer: 0
+      _numberMax: 3
+      _giftedClicks: 15
   - _title: Ginger
-    _priceText: 35
+    _priceText: 40
     _description: 
     _objectIcon: {fileID: 21300000, guid: 9161927643d68714bb5dc87a92f335c8, type: 3}
     _upgradeType: 0
@@ -25685,8 +25713,16 @@ MonoBehaviour:
       _giftedClicksTimer: 8
       _numberMax: 0
       _giftedClicks: 0
+    - _timeGoal: 6
+      _giftedClicksTimer: 15
+      _numberMax: 0
+      _giftedClicks: 0
+    - _timeGoal: 4
+      _giftedClicksTimer: 25
+      _numberMax: 0
+      _giftedClicks: 0
   - _title: Soy Sauce
-    _priceText: 50
+    _priceText: 60
     _description: 
     _objectIcon: {fileID: 21300000, guid: fc18dd9c3dae00448b1a5d1e78dbc219, type: 3}
     _upgradeType: 0
@@ -25701,6 +25737,14 @@ MonoBehaviour:
       _giftedClicksTimer: 10
       _numberMax: 0
       _giftedClicks: 0
+    - _timeGoal: 1
+      _giftedClicksTimer: 20
+      _numberMax: 0
+      _giftedClicks: 0
+    - _timeGoal: 1
+      _giftedClicksTimer: 35
+      _numberMax: 0
+      _giftedClicks: 0
   _upgradePrefabUI: {fileID: 7217637179844685190, guid: 232e0f49a541c284486c2c16a5c4d635, type: 3}
   _parentUpgrades: {fileID: 229635620}
   _newItems: {fileID: 1251586692}
@@ -25713,8 +25757,6 @@ MonoBehaviour:
   _changeParticle: {fileID: 1367241590}
   _boardTransform: {fileID: 673033498}
   _onigiriTransform: {fileID: 2064354821}
-  _onigiriRotateTo: -10
-  _scaleMultiplier: 1.5
   _scrollArrow: {fileID: 602646722}
   _audioList: []
 --- !u!224 &7278594396751892303 stripped

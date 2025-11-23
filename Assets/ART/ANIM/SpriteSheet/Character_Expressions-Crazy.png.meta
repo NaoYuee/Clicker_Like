@@ -1,0 +1,271 @@
+fileFormatVersion: 2
+guid: 2f621f6644c46d24fbb30a02e226ffee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5872990120296243172
+    second: Character_Expressions-Crazy_0
+  - first:
+      213: 4261436934223748360
+    second: Character_Expressions-Crazy_1
+  - first:
+      213: 1722917095956789038
+    second: Character_Expressions-Crazy_2
+  - first:
+      213: 8931807403492706358
+    second: Character_Expressions-Crazy_3
+  - first:
+      213: 5409643942427610647
+    second: Character_Expressions-Crazy_4
+  - first:
+      213: 2910015379745146150
+    second: Character_Expressions-Crazy_5
+  - first:
+      213: -5051388281962139225
+    second: Character_Expressions-Crazy_6
+  - first:
+      213: 5116137305374391291
+    second: Character_Expressions-Crazy_7
+  - first:
+      213: 9102015081768470694
+    second: Character_Expressions-Crazy_8
+  - first:
+      213: -1055473772148357576
+    second: Character_Expressions-Crazy_9
+  - first:
+      213: 4774938806831371717
+    second: Character_Expressions-Crazy_10
+  - first:
+      213: -3174263123758626475
+    second: Character_Expressions-Crazy_11
+  - first:
+      213: -8462163292369723125
+    second: Character_Expressions-Crazy_12
+  - first:
+      213: 5810205339904439001
+    second: Character_Expressions-Crazy_13
+  - first:
+      213: 4691468316783268802
+    second: Character_Expressions-Crazy_14
+  - first:
+      213: -2882669187812308844
+    second: Character_Expressions-Crazy_15
+  - first:
+      213: -797322096165966135
+    second: Character_Expressions-Crazy_16
+  - first:
+      213: 215335473160786120
+    second: Character_Expressions-Crazy_17
+  - first:
+      213: -7479756069645485901
+    second: Character_Expressions-Crazy_18
+  - first:
+      213: 5645322496894948441
+    second: Character_Expressions-Crazy_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Character_Expressions-Crazy_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 316
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8d1dcd41998aa40867a96908bcedf7
+      internalID: -606034191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Expressions-Crazy_1
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 0
+        width: 316
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 576f2418853ac814987c5b6bc76c1e0a
+      internalID: -1544809200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Expressions-Crazy_2
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 0
+        width: 316
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23704cf975a434b468b5661dae7bad5e
+      internalID: -366819495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Expressions-Crazy_3
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 0
+        width: 316
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c801a67f737ad7b40904623ddca67fe5
+      internalID: 1021956990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ddbc4c00aa8bf8545bb64722860efb24
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":316.0,"y":325.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Character_Expressions-Crazy_0: -606034191
+      Character_Expressions-Crazy_1: -1544809200
+      Character_Expressions-Crazy_2: -366819495
+      Character_Expressions-Crazy_3: 1021956990
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

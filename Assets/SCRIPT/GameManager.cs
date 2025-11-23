@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public ParticleSystem _achievementParticle;
     public ParticleSystem _clickParticle;
     public ParticleSystem _changeParticle;
+    private bool _particleUnlocked = false;
 
     public RectTransform _boardTransform;
     private Vector3 _originalBoardScale;
@@ -65,8 +66,8 @@ public class GameManager : MonoBehaviour
     private Vector3 _onigiriScaleTo;
     private Vector3 _onigiriRotation;
     private Vector3 _originalRotation;
-    public float _onigiriRotateTo;
-    public float _scaleMultiplier;
+    private float _onigiriRotateTo = -10f;
+    private float _scaleMultiplier = 1.5f;
 
     public RectTransform _scrollArrow;
 
@@ -76,6 +77,9 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+
+        Screen.SetResolution(1920, 1080, true);
+
         BounceArrow();
 
         _clickGauge.maxValue = _gaugeMax;
@@ -93,6 +97,8 @@ public class GameManager : MonoBehaviour
         _mouseAnimatorLeft.SetBool("_stopLeft", false);
         _mouseAnimatorRight.SetBool("_stopRight", false);
         _clickRight.SetActive(false);
+
+        _changeParticle.Stop();
 
 
         #region Onigiri Anim
@@ -145,7 +151,7 @@ public class GameManager : MonoBehaviour
                 {
                     StopMouseAnim(_mouseAnimatorRight, _clickRight, 3f, "_stopRight", true);
                     _scriptFound.ChangeToNextItem();
-                    if (_gaugeProgression >= 30)
+                    if (_particleUnlocked == true)
                     {
                         _changeParticle.transform.position = _point;
                         _changeParticle.Play();
@@ -217,7 +223,6 @@ public class GameManager : MonoBehaviour
         _clicks = _clicks + _addedClicks;
         UpdateCounter();
         Gauge();
-        Debug.Log("Gauge");
         FeedbackItem();
         ClickAnimation();
         AudioManager.Instance.PlayGroupSFX(_audioList);
@@ -229,10 +234,11 @@ public class GameManager : MonoBehaviour
 
     private void TutoRightClick()
     {
-        if (_gaugeMax == 30 && _gaugeProgression >= 30)
+        if (_gaugeProgression == 29)
         {
             _clickRight.SetActive(true);
             _mouseAnimatorRight.SetBool("_isRight", true);
+            _particleUnlocked = true;
         }
     }
 
@@ -242,13 +248,10 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX("Bell Finish");
             _achievementParticle.Play();
+            TutoRightClick();
         }
         if (_gaugeProgression % _gaugeMax == 0 && _gaugeProgression != 0)
         {
-
-            TutoRightClick();
-            Debug.Log(_gaugeProgression);
-
             _gaugeMax = _gaugeMax * _gaugeMultiplier;
             _clickGauge.maxValue = _gaugeMax;
             _gaugeProgression = 0;
@@ -288,8 +291,6 @@ public class GameManager : MonoBehaviour
             _itemsCollections[0].AddSprite();
             _itemsCollections[1].AddSprite();
             _newItems.PanelFadeIn();
-            Debug.Log(_gaugeProgression);
-            Debug.Log(_gaugeMax);
             StartCoroutine(Fade());
         }
     }
