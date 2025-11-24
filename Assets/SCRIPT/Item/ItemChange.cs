@@ -5,7 +5,7 @@ public class ItemChange : MonoBehaviour
 {
     [Header("Item Description")]
     public List<ItemSceneHandler> _itemSceneHandler;
-    public List<ItemSceneHandler> _stockedItem;
+    [HideInInspector] public List<ItemSceneHandler> _stockedItem;
     private Sprite _itemSprite;
     private Sprite _thumbnailSprite;
     /*private Sprite _thumbnailExpression;*/
@@ -96,6 +96,7 @@ public class ItemChange : MonoBehaviour
         if (_stockedItem.Count == 0)
         {
             Debug.Log("Nothing yet");
+            return;
         }
         else
         {

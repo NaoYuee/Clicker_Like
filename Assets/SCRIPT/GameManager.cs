@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour
 
             _clickParticle.transform.position = _point;
             _clickParticle.Play();
+            AudioManager.Instance.PlaySFX("Munch");
 
             RaycastHit2D hit = Physics2D.Raycast(_point, Vector2.zero, 0f, _objectsLayerMask);
 
@@ -155,6 +156,8 @@ public class GameManager : MonoBehaviour
                     {
                         _changeParticle.transform.position = _point;
                         _changeParticle.Play();
+                        AudioManager.Instance.PlaySFX("Poof");
+                        Debug.Log("poof");
                     }
                 }
             }

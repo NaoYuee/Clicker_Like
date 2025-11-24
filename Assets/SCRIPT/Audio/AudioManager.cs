@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     public void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.volume = 0.5f;
+        _audioSource.volume = 0.2f;
 }
 
     public void PlaySFX(string _title)
